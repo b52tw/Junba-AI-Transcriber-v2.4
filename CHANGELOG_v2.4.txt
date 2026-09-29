@@ -1,0 +1,27 @@
+Junba AI Transcriber v2.4 更新重點
+
+1. Gemini 多人講者
+- Google Gemini 3.5 Transcribe 音訊檔案模式可使用 speaker diarization。
+- v2.4 允許「多人講者 + 字詞時間戳」同時啟用。
+- Smart 智慧逐字稿與多人講者/時間戳互斥；v2.4 改為自動切換，不再只跳出衝突視窗。
+- 長音檔若開多人講者或時間戳，每段自動限制在 30 分鐘內；仍建議先切 10~15 分鐘。
+
+2. 繁體中文（台灣）輸出
+- 新增「繁體中文（台灣用字）輸出」，預設開啟。
+- 「繁體中文／華語・台語混合（台灣）」會在辨識後以 OpenCC s2twp 轉為台灣繁體中文。
+- 全文與 speaker segments 同時轉換，因此 Word/TXT/SRT/VTT 均保持繁體。
+- 舊版快取即使含簡體，讀取後也會再轉為繁體。
+
+3. GitHub 兩個 Artifact
+- Single EXE：單一 exe，攜帶方便；啟動時需解包，較容易受防毒/CUDA/DLL 影響。
+- Portable：ZIP 解壓後整個資料夾執行，檔案較多但通常較穩定。
+- 建議先試 Single；有閃退/DLL/CUDA 問題再用 Portable。兩者功能相同，不用都下載。
+
+4. CI/驗證
+- Python compileall
+- pytest 6 項單元/功能測試
+- Gemini diarization + timestamps 請求結構測試
+- 台灣繁體中文轉換測試
+- Windows source GUI offscreen smoke test
+- Single EXE / Portable EXE 一般 self-test
+- Single EXE / Portable EXE GUI offscreen self-test

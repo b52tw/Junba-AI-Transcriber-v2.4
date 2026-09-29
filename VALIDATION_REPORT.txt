@@ -1,0 +1,24 @@
+Junba AI Transcriber v2.4 — 驗證報告
+日期：2026-09-29
+
+已在目前建置環境完成：
+- Python compileall：PASS
+- pytest：6 passed
+- FFmpeg 音檔建立/時長/合併：PASS
+- 中文檔名切割與快取重用：PASS
+- Gemini 中文檔名 ASCII 上傳別名：PASS
+- Gemini diarization + word timestamps 請求結構：PASS
+- speaker annotation 分組：PASS
+- 台灣繁體中文轉換：PASS
+
+v2.4 主要修正：
+1. Gemini 多人講者與字詞時間戳允許同時使用，使用 verbatim mode。
+2. Smart transcription 若被勾選，會自動關閉多人講者與時間戳；反向切換亦會自動關閉 Smart。
+3. 中文/華台混合輸出新增「繁體中文（台灣用字）」後處理，全文與各 speaker segment 一併轉換。
+4. requirements 與 PyInstaller spec 已加入 opencc-python-reimplemented / opencc 資料收集。
+5. GitHub Actions 新增 source GUI、Single EXE GUI、Portable EXE GUI 的 offscreen 自我測試。
+
+目前環境限制：
+- 本容器未安裝 PySide6，因此無法在此直接執行 Qt GUI runtime 測試。
+- GitHub Actions windows-latest 會安裝完整 requirements，並執行 GUI offscreen smoke test。
+- 無使用者 Gemini API Key，因此無法在此替使用者做真實 Google API 音訊上傳；程式設定頁的「完整測試 API Key（含音訊上傳）」負責帳戶端實測。
